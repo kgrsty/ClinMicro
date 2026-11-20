@@ -7,7 +7,7 @@ parse_sleeve_culture <- function(block) {
 
   tibble::tibble(
     Accession = meta$Accession,
-    Patient_name = meta$Patient_name,
+    MRN = meta$MRN,
     Sleeve_date = parse_sleeve_dates(block)
   )
 }
