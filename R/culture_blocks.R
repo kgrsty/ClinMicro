@@ -1,6 +1,6 @@
 #' Extracts culture-level metadata such as accession number and patient name from a report block.
 #' @export
-#' @return tibble containing name, accession, procedure, source, collect_date
+#' @return dataframe with name, accession, procedure, source, collect_date
 
 get_culture_info <- function(block){
 
@@ -33,6 +33,12 @@ Name <- stringr::str_match(
     "[0-9]{2}-[0-9]{3}-[0-9]{5}"
   )
 
+#extract MRN
+mrn <- stringr::str_match(
+  get_line("MRN/Age/Sex:"),
+  "MRN/Age/Sex:\\s*([0-9]+)"
+)[,2]
+  
 # Procedure, Source, and Collect Date all occur
 # on the same report line
 #Helper function (line)
@@ -63,6 +69,7 @@ line,
     Accession = Accession,
     Patient_name = Name,
     Procedure = Procedure,
+    MRN = mrn,
     Source = Source,
     Collect_Date = Collect_Date
   )
