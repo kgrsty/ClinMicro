@@ -10,7 +10,7 @@ parse_org <- function(block) {
 
   tibble::tibble(
     Accession = meta$Accession,
-    Patient_name = meta$Patient_name,
+    MRN = meta$MRN,
     Organism = orgs
   )
 }
