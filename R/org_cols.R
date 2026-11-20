@@ -17,7 +17,7 @@ org_cols <- function(file) {
 
       out <- tibble::tibble(
         Accession = meta$Accession,
-        Patient_name = meta$Patient_name
+        MRN = meta$MRN
       )
 
       for (i in seq_along(orgs)) {
